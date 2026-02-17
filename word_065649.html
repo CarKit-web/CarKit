@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Producto</title>                   <style>
+        body {                                                          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        h2 { color: #2c3e50; margin-bottom: 5px; font-size: 1.4em; }
+        .envio-info { color: #666; font-size: 0.85em; margin-bottom: 20px; }
+        .destacado { color: #e67e22; font-weight: bold; }
+
+        .producto-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: block;
+        }
+
+        .precio {
+            font-size: 1.5em;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .botones-pago {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75em;
+            transition: opacity 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        /* Colores de botones */
+        .davivienda { background-color: #ed1c24; }
+        .nequi { background-color: #7000ff; }
+        .paypal { background-color: #003087; }
+        .global66 { background-color: #00a859; }
+
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>PRODUCTOS COLOMBIA</h2>
+        <div class="envio-info">📦 Envío por Interrapidisimo - 9-15 días</div>
+        <div class="destacado">🇨🇴 LUZ LED CAMBUS</div>
+        <div style="font-weight: bold;">⭐ ⭐ ⭐ ⭐ ⭐  4.8 | 5.000+vendidos(s)</div>
+        <img src="LED.png" alt="LED" class="producto-img">
+        <div class="precio">$100.000 COP</div>
+
+        <div class="botones-pago">
+            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20el%20Kit%20QISI%20Estándar%20por%20Davivienda%20($100.000)"
+               class="btn davivienda" target="_blank">🛒 Davivienda</a>
+
+            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20el%20Kit%20QISI%20Estándar%20por%20Nequi%20($100.000)"
+               class="btn nequi" target="_blank">🛒 Nequi</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>COMPRAS INTERNACIONALES</h2>
+        <div class="envio-info">🌎 Standard shipping takes 9-15 days</div>
+        <div class="destacado">✈️ LED CANBUS STREETLIGHT</div>
+        <div style="font-weight: bold;">⭐ ⭐ ⭐ ⭐ ⭐  4.8 | 5.000+vendidos(s)</div>
+        <img src="LED.png" alt="LED" class="producto-img">
+        <div class="precio">$28 USD</div>
+
+        <div class="botones-pago">
+            <a href="https://www.paypal.com/invoice/p/#KNSGPD45SN3M7YXN" class="btn paypal" target="_blank">🔵 PayPal</a>
+
+            <a href="https://wa.me/+573186632478?text=Hello!%20I'm%20interested%20in%20buying%20the%20Global%20Kit%20QISI%20via%20Global66%20($29%20USD)"
+               class="btn global66" target="_blank">🟢 Global66</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
