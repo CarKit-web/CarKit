@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">                                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Producto</title>                   <style>
-        body {                                                          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Producto</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f9;
             display: flex;
             justify-content: center;
@@ -27,9 +30,22 @@
             line-height: 1.6;
         }
 
-        h2 { color: #2c3e50; margin-bottom: 5px; font-size: 1.4em; }
-        .envio-info { color: #666; font-size: 0.85em; margin-bottom: 20px; }
-        .destacado { color: #e67e22; font-weight: bold; }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.4em;
+        }
+
+        .envio-info {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+
+        .destacado {
+            color: #e67e22;
+            font-weight: bold;
+        }
 
         .producto-img {
             width: 100%;
@@ -39,13 +55,6 @@
             margin: 15px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             display: block;
-        }
-
-        .precio {
-            font-size: 1.5em;
-            color: #27ae60;
-            font-weight: bold;
-            margin: 10px 0;
         }
 
         .botones-pago {
@@ -72,11 +81,38 @@
 
         /* Colores de botones */
         .davivienda { background-color: #ed1c24; }
-        .nequi { background-color: #7000ff; }
-        .paypal { background-color: #003087; }
-        .global66 { background-color: #00a859; }
+        .nequi     { background-color: #7000ff; }
+        .paypal    { background-color: #003087; }
+        .global66  { background-color: #00a859; }
 
         .btn:hover { opacity: 0.8; }
+
+        /* === NUEVOS ESTILOS PARA PRECIO + OFERTA === */
+        .precio-oferta {
+            font-size: 1.5em;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .precio-descuento {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .precio-original {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .ahorro {
+            display: block;
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -88,14 +124,20 @@
         <div class="envio-info">📦 Envío por Interrapidisimo - 9-15 días</div>
         <div class="destacado">🇨🇴 LUZ LED CAMBUS</div>
         <div style="font-weight: bold;">⭐ ⭐ ⭐ ⭐ ⭐  4.8 | 5.000+vendidos(s)</div>
-        <img src="LED_065716.png" alt="Luz LED Canbus" width="300">
-        <div class="precio">$100.000 COP</div>
+        <img src="LED_065716.png" alt="Luz LED Canbus" class="producto-img">
+
+        <!-- Precio actualizado con oferta -->
+        <div class="precio-oferta">
+            <span class="precio-descuento">$100.000 COP</span>
+            <span class="precio-original">$150.000 COP</span>
+            <span class="ahorro">↓-33.33% | Ahorra $50.000</span>
+        </div>
 
         <div class="botones-pago">
-            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20el%20Kit%20QISI%20Estándar%20por%20Davivienda%20($100.000)"
+            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20el%20por%20luz%20ledcambus%20por%20Davivienda%20($100.000)"
                class="btn davivienda" target="_blank">🛒 Davivienda</a>
 
-            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20el%20Kit%20QISI%20Estándar%20por%20Nequi%20($100.000)"
+            <a href="https://wa.me/+573186632478?text=Hola!%20Quiero%20pagar%20por%20la%20luz%20ledcambus%20por%20Nequi%20($100.000)"
                class="btn nequi" target="_blank">🛒 Nequi</a>
         </div>
     </div>
@@ -105,13 +147,19 @@
         <div class="envio-info">🌎 Standard shipping takes 9-15 days</div>
         <div class="destacado">✈️ LED CANBUS STREETLIGHT</div>
         <div style="font-weight: bold;">⭐ ⭐ ⭐ ⭐ ⭐  4.8 | 5.000+vendidos(s)</div>
-        <img src="LED_065716.png" alt="Luz LED Canbus" width="300">
-        <div class="precio">$28 USD</div>
+        <img src="LED_065716.png" alt="Luz LED Canbus" class="producto-img">
+
+        <!-- Precio actualizado con oferta (adaptado a USD) -->
+        <div class="precio-oferta">
+            <span class="precio-descuento">$28.00 USD</span>
+            <span class="precio-original">$41.07 USD</span>
+            <span class="ahorro">↓-33.33% | Ahorra $13.69</span>
+        </div>
 
         <div class="botones-pago">
             <a href="https://www.paypal.com/invoice/p/#KNSGPD45SN3M7YXN" class="btn paypal" target="_blank">🔵 PayPal</a>
 
-            <a href="https://wa.me/+573186632478?text=Hello!%20I'm%20interested%20in%20buying%20the%20Global%20Kit%20QISI%20via%20Global66%20($29%20USD)"
+            <a href="https://wa.me/+573186632478?text=Hello!%20I'm%20interested%20in%20buying%20the%20Global%20luz%20ledcambus%20via%20Global66%20($28%20USD)"
                class="btn global66" target="_blank">🟢 Global66</a>
         </div>
     </div>
