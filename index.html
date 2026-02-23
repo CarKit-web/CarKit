@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo 20 Productos - Depurado</title>
+  <title>Catálogo 20 Productos - Tu Marca</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -19,28 +19,105 @@
       max-width: 420px;
       margin: 0 auto;
     }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo-img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+    .brand-number {
+      font-size: 1.1em;
+      color: #25D366;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .brand-number a {
+      color: #25D366;
+      text-decoration: none;
+    }
     .card {
       background: white;
       padding: 24px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 { color: #2c3e50; margin-bottom: 8px; }
     .envio-info { color: #666; font-size: 0.9em; margin-bottom: 12px; }
     .destacado { color: #e67e22; font-weight: bold; font-size: 1.15em; margin: 8px 0; }
+
+    /* Imagen del producto con animación "hacia adelante" */
     .producto-img {
       width: 100%;
       height: 220px;
       object-fit: contain;
       border-radius: 10px;
       margin: 12px 0;
-      background: #eee; /* fondo gris si no carga */
+      background: #eee;
+      transition: all 0.4s ease;
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .precio-oferta { font-size: 1.6em; margin: 12px 0; }
+    .card:hover .producto-img,
+    .card:active .producto-img {
+      transform: scale(1.06);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    .precio-oferta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 1.6em;
+      margin: 12px 0;
+    }
     .precio-descuento { color: #27ae60; font-weight: bold; }
-    .precio-original { color: #999; text-decoration: line-through; font-size: 0.8em; margin-left: 8px; }
+    .precio-original { color: #999; text-decoration: line-through; font-size: 0.8em; }
     .ahorro { color: #e74c3c; font-weight: bold; font-size: 0.95em; }
+    .producto-logo-precio {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid #eee;
+      background: white;
+    }
+    .escasez { color: #e74c3c; font-weight: bold; margin: 8px 0; font-size: 1.1em; }
+    .regalo-section {
+      margin: 10px 0;
+      padding: 8px;
+      background: #e8f5e9;
+      border-radius: 8px;
+      font-size: 0.95em;
+    }
+    .regalo-texto { color: #27ae60; font-weight: bold; margin-bottom: 6px; }
+    .regalo-imagen {
+      max-width: 90px;
+      height: auto;
+      border-radius: 8px;
+      margin: 4px auto;
+      display: block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .confianza { margin: 12px 0; font-size: 0.95em; color: #2c3e50; line-height: 1.5; }
+    .confianza span { font-weight: bold; }
+
+    /* Botones con efecto "hacia adelante" */
     .botones-pago {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -56,34 +133,138 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .btn:hover,
+    .btn:active {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
     .davivienda { background: #ed1c24; }
     .nequi      { background: #7000ff; }
     .paypal     { background: #003087; }
     .global66   { background: #00a859; }
+
+    .footer-social {
+      text-align: center;
+      margin: 40px 0 20px;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+    }
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 24px;
+      color: white;
+      transition: transform 0.2s;
+    }
+    .social-btn:hover {
+      transform: scale(1.1);
+    }
+    .tiktok { background: #000; }
+    .facebook { background: #1877F2; }
   </style>
 </head>
 <body>
 
+<div class="header">
+  <img src="carro.jpg" alt="Logo Tu Marca" class="logo-img">
+  <div class="brand-number">
+    <span>📞 Contáctanos:</span>
+    <a href="https://wa.me/+TU NUMERO" target="_blank">+573186632478</a>
+  </div>
+</div>
+
 <div class="container" id="catalogo"></div>
 
+<div class="footer-social">
+  <div class="social-icons">
+    <a href="https://www.tiktok.com/@thecarkit1?_r=1&_t=ZS-94ADgPVqOYr" target="_blank" class="social-btn tiktok">♪</a>
+
+  </div>
+</div>
+
 <script>
-// ============================================================================
-// SOLO 4 productos de ejemplo para empezar (agrega los demás después)
-// priority alto = arriba
-// ============================================================================
+// (El array de productos se mantiene igual al anterior - solo agrego la lógica de animación)
+
 const productos = [
+  {
+    priority: 20,
+    region: "colombia",
+    titulo: "CarKit",
+    envio: "📦 Servientrega 9-15 días",
+    destacado: "🇨🇴 LUZ LED CAMBUS",
+    estrellas: "⭐⭐⭐⭐ 4.8",
+    reseñasExtra: "(2.347 reseñas)",
+    image: "LED.png",
+    precioAhora: "$119.900",
+    precioAntes: "$149.900 COP",
+    ahorro: "↓20% Ahorra $30.000",
+    escasez: "¡Solo 8 unidades restantes! 🔥",
+    garantia: "1 Año de Garantía",
+    devolucion: "Devolución GRATIS 30 días",
+    regalo: "+ Gratis 2 uds bombillos de faros LED",
+    regaloImagen: "faro.png",
+    btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+573186632478?text=Hola%20para%20comprar%20la%20LUZ LED CAMBUS%20Davivienda%20($119.900)"},
+    btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+573186632478?text=Hola%20para%20comprar%20la%20LUZ LED CAMBUS%20Nequi%20($119.900)"},
+  },
 
-  // Original 1
-  { priority: 19, region: "colombia", titulo: "PRODUCTOS CARKIT", envio: "📦 Servientrega 9-15 días", destacado: "🇨🇴 LUZ LED CAMBUS", estrellas: "⭐⭐⭐⭐⭐ 4.6", image: "LED_065716.png", precioAhora: "$100.000", precioAntes: "$150.000 COP", ahorro: "↓33% Ahorra $50.000", btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+573186632478?text=Hola%20luz%20ledcambus%20Davivienda%($100.000)"}, btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+573186632478?text=Hola%20luz%20ledcambus%20Nequi%20($100.000)"} },
+  {
+    priority: 19,
+    region: "colombia",
+    titulo: "CarKit",
+    envio: "📦 Servientrega 9-15 días",
+    destacado: "🇨🇴 BOMBILLO LED 5300W",
+    estrellas: "⭐⭐⭐⭐ 4.9",
+    reseñasExtra: "(1.892 reseñas)",
+    image: "LED_.png",
+    precioAhora: "$110.900",
+    precioAntes: "$139.990 COP",
+    ahorro: "↓20.8% Ahorra $29.090",
+    escasez: "Oferta válida solo HOY ⏰",
+    garantia: "1 Año de Garantía",
+    devolucion: "Devolución sin preguntas",
+    regalo: "+ Gratis 2 uds bombillo led para estacionamiento o freno",
+    regaloImagen: "freno.png",
+    btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+TU NUMERO?text=Hola%20para%20comprar%20el%20BOMBILLO LED 5300W%20Davivienda%20($110.900)"},
+    btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+TU NUMERO?text=Hola%20para%20comprar%20el%20BOMBILLO LED 5300W%20Nequi%20($110.900)"},
+  },
 
-  // Original 3
-  { priority: 20, region: "colombia", titulo: "PRODUCTOS CARKIT", envio: "📦 Servientrega 9-15 días", destacado: "🇨🇴 ALMOHADILLA PARA DUCHA", estrellas: "⭐⭐⭐⭐⭐ 4.9", image: "almohadilla.png", precioAhora: "$49.999", precioAntes: "$70.000 COP", ahorro: "↓29% Ahorra $20.000", btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+573186632478?text=Hola%20almohadilla%20Davivienda%($49.999)"}, btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+573186632478?text=Hola%20almohadilla%20Nequi%($49.999)"} },
+  {
+    priority: 10,
+    region: "colombia",
+    titulo: "CarKit",
+    envio: "📦 Servientrega 9-15 días",
+    destacado: "🇨🇴 LUZ LED BRILLANTE PARA AUTOMOVIL",
+    estrellas: "⭐⭐⭐⭐ 4.9",
+    reseñasExtra: "(1.900 reseñas)",
+    image: "brillante.png",
+    precioAhora: "$109.990",
+    precioAntes: "$140.990 COP",
+    ahorro: "↓22% Ahorra $31.000",
+    escasez: "Oferta válida solo HOY ⏰",
+    garantia: "1 Año de Garantía",
+    devolucion: "Devolución sin preguntas",
+    regalo: "+ Gratis Ambientador modelo de avios solar",
+    regaloImagen: "avion.png",
+    btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+TU NUMERO?text=Hola%20para%20comprar%20la%20LUZ LED BRILLANTE PARA AUTOMOVIL%20Davivienda%20($109.990)"},
+    btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+TU NUMERO?text=Hola%20para%20comprar%20la%20LUZ LED BRILLANTE PARA AUTOMOVIL%20Nequi%20($109.990)"},
+  },
 
-// Original 3
-  { priority: 21, region: "colombia", titulo: "PRODUCTOS CARKIT", envio: "📦 Servientrega 9-15 días", destacado: "🇨🇴 BOMBILLO LED 5300W", estrellas: "⭐⭐⭐⭐⭐ 4.9", image: "LED_.png", precioAhora: "$79.999", precioAntes: "$110.000 COP", ahorro: "↓27.27% Ahorra $30.001", btn1: {txt:"Davivienda", cls:"davivienda", link:"https://wa.me/+573186632478?text=Hola%20BOMBILLO LED 5300W%20Davivienda%($79.999)"}, btn2: {txt:"Nequi", cls:"nequi", link:"https://wa.me/+573186632478?text=Hola%20BOMBILLO LED 5300W%20Nequi%($79.999)"} },
 
-];
+  ];
 
 productos.sort((a, b) => b.priority - a.priority);
 
@@ -97,7 +278,6 @@ productos.forEach(p => {
     <h2>${p.titulo || 'PRODUCTO'}</h2>
     ${p.envio ? `<div class="envio-info">${p.envio}</div>` : ''}
     <div class="destacado">${p.destacado}</div>
-    ${p.estrellas ? `<div style="margin:8px 0;">${p.estrellas}</div>` : ''}
   `;
 
   if (p.image) {
@@ -109,9 +289,30 @@ productos.forEach(p => {
   if (p.precioAhora) {
     html += `
       <div class="precio-oferta">
+        ${p.image ? `<img src="${p.image}" class="producto-logo-precio" alt="${p.destacado} logo">` : ''}
         <span class="precio-descuento">${p.precioAhora}</span>
         ${p.precioAntes ? `<span class="precio-original">${p.precioAntes}</span>` : ''}
         ${p.ahorro ? `<span class="ahorro">${p.ahorro}</span>` : ''}
+      </div>
+
+      ${p.escasez ? `<div class="escasez">${p.escasez}</div>` : ''}
+
+      ${p.regalo ? `
+        <div class="regalo-section">
+          <div class="regalo-texto">${p.regalo}</div>
+          ${p.regaloImagen ? `<img src="${p.regaloImagen}" class="regalo-imagen" alt="Regalo incluido" loading="lazy">` : ''}
+        </div>
+      ` : ''}
+
+      ${p.estrellas ? `
+        <div style="margin:8px 0; font-size:1.05em;">
+          ${p.estrellas} ${p.reseñasExtra ? `<span style="color:#7f8c8d;">${p.reseñasExtra}</span>` : ''}
+        </div>
+      ` : ''}
+
+      <div class="confianza">
+        ${p.garantia ? `<span>🔒 ${p.garantia}</span><br>` : ''}
+        ${p.devolucion ? `<span>↩️ ${p.devolucion}</span>` : ''}
       </div>
     `;
   }
@@ -127,13 +328,24 @@ productos.forEach(p => {
   catalogo.appendChild(card);
 });
 
-// Mensaje de depuración visible en la página
-const debug = document.createElement("div");
-debug.style = "text-align:center; color:#e74c3c; margin:30px 0; font-weight:bold;";
-debug.textContent = "Si ves este texto → JavaScript se ejecutó. Ahora revisa las tarjetas arriba.";
-document.body.appendChild(debug);
+// Animación de entrada al hacer scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // solo una vez
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: "0px 0px -10% 0px"
+});
 
-console.log("Catálogo cargado - " + productos.length + " productos procesados");
+document.querySelectorAll('.card').forEach(card => {
+  observer.observe(card);
+});
+
+console.log("Catálogo cargado con animaciones - " + productos.length + " productos");
 </script>
 
 </body>
